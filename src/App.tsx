@@ -18,13 +18,13 @@ function App() {
   const renderStep = () => {
     switch (step) {
       case 1:
-        return <PersonalInfoForm onNext={() => handleStepChange(2)} step={step}/>;
+        return <PersonalInfoForm onNext={() => handleStepChange(step+1)} step={step}/>;
       case 2:
-        return <ChoosePlan onNext={() => handleStepChange(3)} onPrev={() => handleStepChange(step-1)} step={step}/>;
+        return <ChoosePlan onNext={() => handleStepChange(step+1)} onPrev={() => handleStepChange(step-1)} step={step}/>;
       case 3:
-        return <PickAddOns onNext={() => handleStepChange(4)} onPrev={() => handleStepChange(step-1)} step={step}/>;
+        return <PickAddOns onNext={() => handleStepChange(step+1)} onPrev={() => handleStepChange(step-1)} step={step}/>;
       case 4:
-        return <FinishUp onNext={() => handleStepChange(5)} onPrev={() => handleStepChange(step-1)} step={step}/>;
+        return <FinishUp onNext={() => handleStepChange(step+1)} onPrev={() => handleStepChange(step-1)} step={step}/>;
       case 5:
         return <ThankYou />;
       default:

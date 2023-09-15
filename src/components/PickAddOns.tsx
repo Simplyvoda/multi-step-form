@@ -89,7 +89,12 @@ const PickAddOns: React.FC<PickAddOnsProps> = ({ onNext, onPrev, step }) => {
                     right={'0'}
                     marginTop={'5rem'}
                     >
-                        <Flex backgroundColor={'white'} height={'72px'} width={'100%'} boxSizing={'border-box'} margin={'0 auto'} justifyContent={step > 1 && step < 5 ? 'space-between' : 'flex-end'} alignItems={'center'}>
+                        <Flex padding={'0rem 1rem'} backgroundColor={'white'} height={'72px'} width={'100%'} boxSizing={'border-box'} margin={'0 auto'} justifyContent={step > 1 && step < 5 ? 'space-between' : 'flex-end'} alignItems={'center'}>
+                            {
+                                step > 1 && step < 5 ?
+                                    <Text color={'#9699AA'} cursor={'pointer'} onClick={onPrev}>Go Back</Text>
+                                    : ''
+                            }
                             {
                                 step < 5 ?
                                     <Button backgroundColor={'#022959'} color='white' fontSize={'14px'} justifySelf={'flex-end'} type='submit' onClick={onNext} isDisabled={Object.keys(selectedAddOns).length === 0}>Next Step</Button>

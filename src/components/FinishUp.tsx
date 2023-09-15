@@ -30,7 +30,7 @@ const FinishUp: React.FC<FinishUpProps> = ({ onNext, onPrev, step }) => {
         console.log(selectedAddOnsArray)
     }, [])
 
-    const totalPerMonth = (): number => {
+    const totalAmount = (): number => {
         const addOnsTotal = selectedAddOnsArray.reduce((acc: number, currentValue: ISelectedAddOns) => {
             if (typeof currentValue.price === 'number') {
                 return acc + currentValue.price;
@@ -79,10 +79,18 @@ const FinishUp: React.FC<FinishUpProps> = ({ onNext, onPrev, step }) => {
                         }
                     </VStack>
                 </Box>
-                <HStack justifyContent={'space-between'} fontFamily={'body'} width={'100%'} lineHeight={'20px'} padding={'32px 16px'}>
-                    <Text color={'#9699AA'} fontSize={'14px'} fontFamily={'body'} fontWeight={'400'}>Total (per month)</Text>
-                    <Text fontSize={'16px'} fontWeight={'700'} color={'#483EFF'} lineHeight={'20px'} marginLeft={'auto'}>+${totalPerMonth()}/mo</Text>
-                </HStack>
+                {
+                    duration === 'monthly' ?
+                        <HStack justifyContent={'space-between'} fontFamily={'body'} width={'100%'} lineHeight={'20px'} padding={'32px 16px'}>
+                            <Text color={'#9699AA'} fontSize={'14px'} fontFamily={'body'} fontWeight={'400'}>Total (per month)</Text>
+                            <Text fontSize={'16px'} fontWeight={'700'} color={'#483EFF'} lineHeight={'20px'} marginLeft={'auto'}>+${totalAmount()}/mo</Text>
+                        </HStack>
+                        :
+                        <HStack justifyContent={'space-between'} fontFamily={'body'} width={'100%'} lineHeight={'20px'} padding={'32px 16px'}>
+                            <Text color={'#9699AA'} fontSize={'14px'} fontFamily={'body'} fontWeight={'400'}>Total (anually)</Text>
+                            <Text fontSize={'16px'} fontWeight={'700'} color={'#483EFF'} lineHeight={'20px'} marginLeft={'auto'}>+${totalAmount()}/yr</Text>
+                        </HStack>
+                }
             </form>
             {
                 isMobile ?
@@ -93,27 +101,12 @@ const FinishUp: React.FC<FinishUpProps> = ({ onNext, onPrev, step }) => {
                         right={'0'}
                         marginTop={'5rem'}
                     >
-                        <Flex backgroundColor={'white'} height={'72px'} width={'100%'} boxSizing={'border-box'} margin={'0 auto'} justifyContent={step > 1 && step < 5 ? 'space-between' : 'flex-end'} alignItems={'center'}>
-                            {
-                                step < 5 ?
-                                    <Button backgroundColor={'#022959'} color='white' fontSize={'14px'} justifySelf={'flex-end'} type='submit' onClick={onNext}>Next Step</Button>
-                                    :
-                                    <Button backgroundColor={'#483EFF'} color='white' fontSize={'14px'} justifySelf={'flex-end'}>Confirm</Button>
-                            }
+                        <Flex padding={'0rem 1rem'} backgroundColor={'white'} height={'72px'} width={'100%'} boxSizing={'border-box'} margin={'0 auto'} justifyContent={'flex-end'} alignItems={'center'}>
+                            <Button backgroundColor={'#483EFF'} color='white' fontSize={'14px'} justifySelf={'flex-end'} onClick={onNext}>Confirm</Button>
                         </Flex>
                     </Box> :
-                    <Flex backgroundColor={'white'} height={'72px'} width={'100%'} boxSizing={'border-box'} margin={'0 auto'} justifyContent={step > 1 && step < 5 ? 'space-between' : 'flex-end'} alignItems={'center'}>
-                        {
-                            step > 1 && step < 5 ?
-                                <Text color={'#9699AA'} cursor={'pointer'} onClick={onPrev}>Go Back</Text>
-                                : ''
-                        }
-                        {
-                            step < 5 ?
-                                <Button backgroundColor={'#022959'} color='white' fontSize={'14px'} justifySelf={'flex-end'} type='submit' onClick={onNext}>Next Step</Button>
-                                :
-                                <Button backgroundColor={'#483EFF'} color='white' fontSize={'14px'} justifySelf={'flex-end'}>Confirm</Button>
-                        }
+                    <Flex backgroundColor={'white'} height={'72px'} width={'100%'} boxSizing={'border-box'} margin={'0 auto'} justifyContent={'flex-end'} alignItems={'center'}>
+                        <Button backgroundColor={'#483EFF'} color='white' fontSize={'14px'} justifySelf={'flex-end'} onClick={onNext}>Confirm</Button>
                     </Flex>
             }
 

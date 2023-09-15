@@ -39,7 +39,7 @@ const PersonalInfoForm: React.FC<PersonalInfoFormProps> = ({ onNext, step }) => 
             if (!value) {
                 setIsEmailError(true);
             }
-        } else if (name === 'phone') {
+        } else if (name === 'phone' && (typeof(value) !== 'number' || value === '' )) {
             if (!value) {
                 setIsPhoneError(true);
             }
@@ -50,18 +50,6 @@ const PersonalInfoForm: React.FC<PersonalInfoFormProps> = ({ onNext, step }) => 
         });
     };
 
-
-
-    // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    //     e.preventDefault();
-    //     console.log('Form Submited')
-    //     if (!isUsernameError || !isEmailError || !isPhoneError) {
-    //         // Form data is valid, call the onNext callback to move to the next step
-    //         // onNext();
-    //     } else {
-    //         // Form data is not valid, display error messages or take appropriate action
-    //     }
-    // }
     return (
         <>
             <form>
@@ -123,7 +111,7 @@ const PersonalInfoForm: React.FC<PersonalInfoFormProps> = ({ onNext, step }) => 
                     right={'0'}
                     marginTop={'5rem'}
                     >
-                        <Flex backgroundColor={'white'} height={'72px'} width={'100%'} boxSizing={'border-box'} margin={'0 auto'} justifyContent={step > 1 && step < 5 ? 'space-between' : 'flex-end'} alignItems={'center'}>
+                        <Flex padding={'0rem 1rem'} backgroundColor={'white'} height={'72px'} width={'100%'} boxSizing={'border-box'} margin={'0 auto'} justifyContent={step > 1 && step < 5 ? 'space-between' : 'flex-end'} alignItems={'center'}>
                             {
                                 step < 5 ?
                                     <Button backgroundColor={'#022959'} color='white' fontSize={'14px'} justifySelf={'flex-end'} type='submit' onClick={onNext} isDisabled={isUsernameError || isEmailError || isPhoneError}>Next Step</Button>
