@@ -1,0 +1,10 @@
+/* fonts.css */
+
+/* Ubuntu Regular */
+@font-face {
+    font-family: 'Ubuntu Regular';
+    src: url('../assets/fonts/Ubuntu-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  

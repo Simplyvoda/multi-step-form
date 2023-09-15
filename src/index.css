@@ -1,0 +1,35 @@
+/* Custom CSS */
+
+.chakra-portal{
+  visibility: hidden;
+}
+.custom-container {
+  width: 100%;
+  height: 110vh; /* Adjust the height as needed */
+  background-color: #EFF5FF;
+  position: relative;
+  margin: 0 auto;
+}
+
+.custom-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 172px;
+  background-image: url('../src/assets/images/bg-sidebar-mobile.svg'); /* Replace with your image path */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.active-step{
+  color: #022959;
+  background-color: #BEE2FD;
+  border: none;
+}
