@@ -28,7 +28,7 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![Home Page](https://github.com/Simplyvoda/multi-step-form/blob/main/Screenshot%20(292).png)
 
 
 ### Links
